@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package view;
 
 import java.text.SimpleDateFormat;
@@ -11,16 +7,12 @@ import java.time.format.DateTimeParseException;
 import javax.swing.JOptionPane;
 import model.Vendedor;
 
-/**
- *
- * @author vanessalagomachado
- */
 public class CadastroVendedorJD extends javax.swing.JDialog {
+
     private Vendedor vendedor;
-    
+
     // Define o mesmo formatador usado para a criação da string
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-    
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
     /**
      * Creates new form CadastroVendedorJD
@@ -28,8 +20,7 @@ public class CadastroVendedorJD extends javax.swing.JDialog {
     public CadastroVendedorJD(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        
+
         vendedor = new Vendedor();
     }
 
@@ -167,10 +158,8 @@ public class CadastroVendedorJD extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        
 
-        
-        try{
+        try {
             this.vendedor.setNome(txtNome.getText());
             this.vendedor.setCPF(txtCPF.getText());
             // sintaxe para conversão: LocalDate.parse(String com data, máscara)
@@ -178,17 +167,17 @@ public class CadastroVendedorJD extends javax.swing.JDialog {
             this.vendedor.setTelefone(txtTelefone.getText());
             this.vendedor.setSalario(Double.parseDouble(txtSalario.getText()));
             this.vendedor.setComissao(Double.parseDouble(txtComissao.getText()));
-            
+
             this.dispose();
-        } catch (DateTimeParseException e1){
-            JOptionPane.showMessageDialog(rootPane, "Data inválida!! Informe data no formato dd-mm-yyyy\n"+e1);
-        } catch (NumberFormatException e2){
-            JOptionPane.showMessageDialog(rootPane, "Valores inválidos!! Em salário e comissão informe somente valores numéricos\n"+e2);
-        } catch (Exception e3){
-            JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro inesperado: \n"+e3);
-        } 
-        
-        
+        } catch (DateTimeParseException e1) {
+            JOptionPane.showMessageDialog(rootPane, "Data inválida!! Informe data no formato dd-mm-yyyy\n" + e1);
+        } catch (NumberFormatException e2) {
+            JOptionPane.showMessageDialog(rootPane, "Valores inválidos!! Em salário e comissão informe somente valores numéricos\n" + e2);
+        } catch (Exception e3) {
+            JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro inesperado: \n" + e3);
+        }
+
+
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**
@@ -241,14 +230,13 @@ public class CadastroVendedorJD extends javax.swing.JDialog {
         this.vendedor = vendedor;
         txtNome.setText(vendedor.getNome());
         txtCPF.setText(vendedor.getCPF());
-        txtComissao.setText(""+vendedor.getComissao());
-        txtSalario.setText(""+vendedor.getSalario());
+        txtComissao.setText("" + vendedor.getComissao());
+        txtSalario.setText("" + vendedor.getSalario());
         txtTelefone.setText(vendedor.getTelefone());
         txtDtNascimento.setText(vendedor.getDataNascimento().format(formatter));
-        
+
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;

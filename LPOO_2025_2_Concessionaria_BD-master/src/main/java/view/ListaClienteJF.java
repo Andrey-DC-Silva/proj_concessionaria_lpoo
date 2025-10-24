@@ -1,22 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Cliente;
-import model.Vendedor;
 import model.dao.ClienteDAO;
-import model.dao.VendedorDAO;
 
-/**
- *
- * @author vanessalagomachado
- */
 public class ListaClienteJF extends javax.swing.JFrame {
 
     ClienteDAO dao;
@@ -194,16 +182,14 @@ public class ListaClienteJF extends javax.swing.JFrame {
             telaEdicao.setCliente(obj);
 
             telaEdicao.setVisible(true);
-            
-            
+
             try {
                 dao.persist(telaEdicao.getCliente());
 
             } catch (Exception ex) {
                 System.err.println("Erro ao editar cliente: " + ex);
             }
-            
-            
+
             loadTabelaClientes();
 
         } else {

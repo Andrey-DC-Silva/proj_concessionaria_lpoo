@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package view;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -17,7 +12,6 @@ import model.Venda;
 import model.Vendedor;
 import model.dao.ClienteDAO;
 import model.dao.VeiculoDAO;
-import model.dao.VendaDAO;
 import model.dao.VendedorDAO;
 
 public class CadastroVendaJD extends javax.swing.JDialog {
@@ -113,27 +107,65 @@ public class CadastroVendaJD extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setText("Cadastro de Venda");
+        jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(null, new java.awt.Color(51, 51, 51)));
 
+        lblDtVenda.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         lblDtVenda.setText("Data Venda:");
 
+        txtDataVenda.setBackground(new java.awt.Color(51, 51, 51));
+        txtDataVenda.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        txtDataVenda.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblValor.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         lblValor.setText("Valor: ");
 
+        txtValor.setBackground(new java.awt.Color(51, 51, 51));
+        txtValor.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        txtValor.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblFormaContrato.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         lblFormaContrato.setText("Forma de Contrato:");
 
+        cmbFormaContrato.setBackground(new java.awt.Color(51, 51, 51));
+        cmbFormaContrato.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        cmbFormaContrato.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblFormaPagamento.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         lblFormaPagamento.setText("Forma de Pagamento:");
 
+        cmbFormaPgto.setBackground(new java.awt.Color(51, 51, 51));
+        cmbFormaPgto.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        cmbFormaPgto.setForeground(new java.awt.Color(255, 255, 255));
+
+        cmbCliente.setBackground(new java.awt.Color(51, 51, 51));
+        cmbCliente.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        cmbCliente.setForeground(new java.awt.Color(255, 255, 255));
+
+        cmbVeiculo.setBackground(new java.awt.Color(51, 51, 51));
+        cmbVeiculo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        cmbVeiculo.setForeground(new java.awt.Color(255, 255, 255));
         cmbVeiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbVeiculoActionPerformed(evt);
             }
         });
 
+        cmbVendedor.setBackground(new java.awt.Color(51, 51, 51));
+        cmbVendedor.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        cmbVendedor.setForeground(new java.awt.Color(255, 255, 255));
+
+        lblCliente.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         lblCliente.setText("Cliente:");
 
+        lblVeiculo.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         lblVeiculo.setText("Veículo:");
 
+        lblVendedor.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
         lblVendedor.setText("Vendedor:");
 
+        btnSalvar.setBackground(new java.awt.Color(51, 51, 51));
+        btnSalvar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +173,9 @@ public class CadastroVendaJD extends javax.swing.JDialog {
             }
         });
 
+        btnCancelar.setBackground(new java.awt.Color(51, 51, 51));
+        btnCancelar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +188,6 @@ public class CadastroVendaJD extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -161,7 +195,7 @@ public class CadastroVendaJD extends javax.swing.JDialog {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(4, 4, 4)
+                            .addGap(10, 10, 10)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(lblFormaContrato)
                                 .addComponent(lblCliente)
@@ -186,10 +220,12 @@ public class CadastroVendaJD extends javax.swing.JDialog {
                             .addComponent(lblDtVenda)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(txtDataVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
-                        .addComponent(btnSalvar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,11 +260,11 @@ public class CadastroVendaJD extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblVendedor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addComponent(btnSalvar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCancelar)
-                .addContainerGap())
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -275,11 +311,11 @@ public class CadastroVendaJD extends javax.swing.JDialog {
     private void cmbVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVeiculoActionPerformed
 
         Veiculo selectedVehicle = (Veiculo) cmbVeiculo.getSelectedItem();
-        
+
         if (selectedVehicle != null) {
             txtValor.setText(String.valueOf(selectedVehicle.getValor()));
         }
-        
+
     }//GEN-LAST:event_cmbVeiculoActionPerformed
 
     /**
@@ -324,6 +360,13 @@ public class CadastroVendaJD extends javax.swing.JDialog {
         });
     }
 
+    public Venda getVenda() {
+        return venda;
+    }
+
+    public void setVenda(Venda venda) {
+        this.venda = venda;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -345,11 +388,4 @@ public class CadastroVendaJD extends javax.swing.JDialog {
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
-    public Venda getVenda() {
-        return venda;
-    }
-
-    public void setVenda(Venda venda) {
-        this.venda = venda;
-    }
 }

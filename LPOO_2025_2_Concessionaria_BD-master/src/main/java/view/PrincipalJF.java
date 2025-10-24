@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
-/**
- *
- * @author vanessalagomachado
- */
 public class PrincipalJF extends javax.swing.JFrame {
 
     /**
@@ -113,7 +105,7 @@ public class PrincipalJF extends javax.swing.JFrame {
     }//GEN-LAST:event_miVeiculoActionPerformed
 
     private void miVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miVendaActionPerformed
-        
+
     }//GEN-LAST:event_miVendaActionPerformed
 
     private void miTelaVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miTelaVendaActionPerformed

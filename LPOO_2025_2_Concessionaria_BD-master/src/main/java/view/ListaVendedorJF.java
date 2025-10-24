@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
 import java.util.logging.Level;
@@ -11,19 +7,16 @@ import javax.swing.table.DefaultTableModel;
 import model.Vendedor;
 import model.dao.VendedorDAO;
 
-/**
- *
- * @author vanessalagomachado
- */
 public class ListaVendedorJF extends javax.swing.JFrame {
 
     VendedorDAO dao;
+
     /**
      * Creates new form ListaVendedorJF
      */
     public ListaVendedorJF() {
         initComponents();
-        
+
         dao = new VendedorDAO();
         loadTabelaVendedores();
     }
@@ -140,20 +133,20 @@ public class ListaVendedorJF extends javax.swing.JFrame {
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         CadastroVendedorJD telaCadastro = new CadastroVendedorJD(this, rootPaneCheckingEnabled);
         telaCadastro.setVisible(true);
-        
+
         Vendedor novoVendedor = telaCadastro.getVendedor();
         try {
             //JOptionPane.showMessageDialog(rootPane, novoVendedor);
             dao.persist(novoVendedor);
         } catch (Exception ex) {
-            System.err.println("Erro ao cadastrar Vendedor: "+ex);
+            System.err.println("Erro ao cadastrar Vendedor: " + ex);
         }
         loadTabelaVendedores();
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
-        if(tblVendedores.getSelectedRow() != -1){
-            Vendedor obj_vendedor = (Vendedor)tblVendedores.getModel().getValueAt(tblVendedores.getSelectedRow(), 0); 
+        if (tblVendedores.getSelectedRow() != -1) {
+            Vendedor obj_vendedor = (Vendedor) tblVendedores.getModel().getValueAt(tblVendedores.getSelectedRow(), 0);
             JOptionPane.showMessageDialog(rootPane, obj_vendedor.exibirDados());
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione um vendedor");
@@ -161,41 +154,40 @@ public class ListaVendedorJF extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInfoActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        if(tblVendedores.getSelectedRow() != -1){
-            Vendedor obj_vendedor = (Vendedor)tblVendedores.getModel().getValueAt(tblVendedores.getSelectedRow(), 0); 
-            int op_remover = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja remover "+obj_vendedor+"?");
-            if(op_remover == JOptionPane.YES_OPTION){
+        if (tblVendedores.getSelectedRow() != -1) {
+            Vendedor obj_vendedor = (Vendedor) tblVendedores.getModel().getValueAt(tblVendedores.getSelectedRow(), 0);
+            int op_remover = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja remover " + obj_vendedor + "?");
+            if (op_remover == JOptionPane.YES_OPTION) {
                 try {
                     dao.remover(obj_vendedor);
                 } catch (Exception ex) {
-                    System.err.println("Erro ao remover vendedor: "+ex);
+                    System.err.println("Erro ao remover vendedor: " + ex);
                 }
                 JOptionPane.showMessageDialog(rootPane, "Vendedor removido com sucesso... ");
                 loadTabelaVendedores();
             }
-            
+
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione um vendedor");
         }
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        if(tblVendedores.getSelectedRow() != -1){
-            Vendedor obj_vendedor = (Vendedor)tblVendedores.getModel().getValueAt(tblVendedores.getSelectedRow(), 0); 
+        if (tblVendedores.getSelectedRow() != -1) {
+            Vendedor obj_vendedor = (Vendedor) tblVendedores.getModel().getValueAt(tblVendedores.getSelectedRow(), 0);
             CadastroVendedorJD telaEdicao = new CadastroVendedorJD(this, rootPaneCheckingEnabled);
             telaEdicao.setVendedor(obj_vendedor);
-            
+
             telaEdicao.setVisible(true);
-            
+
             try {
                 dao.persist(telaEdicao.getVendedor());
             } catch (Exception ex) {
-                System.out.println("Erro ao editar Vendedor: "+ex);
+                System.out.println("Erro ao editar Vendedor: " + ex);
             }
-            
+
             loadTabelaVendedores();
-            
-            
+
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione um vendedor");
         }
@@ -235,24 +227,24 @@ public class ListaVendedorJF extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void loadTabelaVendedores(){
-        
+
+    public void loadTabelaVendedores() {
+
         // Obtém o modelo da tabela - vincular o que definimos no Desing
         DefaultTableModel modelo = (DefaultTableModel) tblVendedores.getModel();
         //limpar as linhas e popular 
         modelo.setNumRows(0);
-        
-        for(Vendedor vendedor: dao.listaVendedores()){
+
+        for (Vendedor vendedor : dao.listaVendedores()) {
             Object[] linha = {
-                vendedor, 
-                    vendedor.getCPF(), 
-                    vendedor.getSalario(), 
-                    vendedor.getComissao()
-                            };
+                vendedor,
+                vendedor.getCPF(),
+                vendedor.getSalario(),
+                vendedor.getComissao()
+            };
             modelo.addRow(linha);
         }
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

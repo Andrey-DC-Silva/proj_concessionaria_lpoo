@@ -34,9 +34,11 @@ public class ListaClienteJF extends javax.swing.JFrame {
         btnEditar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         btnInfo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        tblVendedores.setBackground(new java.awt.Color(51, 51, 51));
         tblVendedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -65,6 +67,7 @@ public class ListaClienteJF extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblVendedores);
 
+        btnNovo.setBackground(new java.awt.Color(51, 51, 51));
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +75,7 @@ public class ListaClienteJF extends javax.swing.JFrame {
             }
         });
 
+        btnEditar.setBackground(new java.awt.Color(51, 51, 51));
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +83,7 @@ public class ListaClienteJF extends javax.swing.JFrame {
             }
         });
 
+        btnRemover.setBackground(new java.awt.Color(51, 51, 51));
         btnRemover.setText("Remover");
         btnRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +91,7 @@ public class ListaClienteJF extends javax.swing.JFrame {
             }
         });
 
+        btnInfo.setBackground(new java.awt.Color(51, 51, 51));
         btnInfo.setText("Mais Informações");
         btnInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,28 +99,38 @@ public class ListaClienteJF extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Clientes Cadastrados");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnNovo)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnEditar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnRemover)
+                            .addGap(39, 39, 39)
+                            .addComponent(btnInfo)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnNovo)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEditar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRemover)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnInfo)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -122,7 +138,7 @@ public class ListaClienteJF extends javax.swing.JFrame {
                     .addComponent(btnEditar)
                     .addComponent(btnRemover)
                     .addComponent(btnInfo))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(29, 29, 29))
         );
 
         pack();
@@ -133,7 +149,7 @@ public class ListaClienteJF extends javax.swing.JFrame {
         telaCadastro.setVisible(true);
 
         Cliente novo = telaCadastro.getCliente();
-        //JOptionPane.showMessageDialog(rootPane, novoVendedor);
+        
         try {
             dao.persist(novo);
 
@@ -183,15 +199,18 @@ public class ListaClienteJF extends javax.swing.JFrame {
 
             telaEdicao.setVisible(true);
 
-            try {
-                dao.persist(telaEdicao.getCliente());
+            Cliente obj_retornado = telaEdicao.getCliente();
 
-            } catch (Exception ex) {
-                System.err.println("Erro ao editar cliente: " + ex);
+            if (obj_retornado != null) {
+
+                try {
+                    dao.persist(obj_retornado);
+                    loadTabelaClientes();
+                } catch (Exception ex) {
+                    System.err.println("Erro ao editar cliente: " + ex);
+                }
+
             }
-
-            loadTabelaClientes();
-
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione um cliente");
         }
@@ -236,10 +255,7 @@ public class ListaClienteJF extends javax.swing.JFrame {
     }
 
     public void loadTabelaClientes() {
-
-        // Obtém o modelo da tabela - vincular o que definimos no Desing
         DefaultTableModel modelo = (DefaultTableModel) tblVendedores.getModel();
-        //limpar as linhas e popular 
         modelo.setNumRows(0);
 
         for (Cliente obj : dao.listaClientes()) {
@@ -257,6 +273,7 @@ public class ListaClienteJF extends javax.swing.JFrame {
     private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnRemover;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblVendedores;
     // End of variables declaration//GEN-END:variables

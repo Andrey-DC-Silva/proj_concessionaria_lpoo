@@ -36,9 +36,12 @@ public class ListaVendedorJF extends javax.swing.JFrame {
         btnEditar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         btnInfo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        tblVendedores.setBackground(new java.awt.Color(51, 51, 51));
+        tblVendedores.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         tblVendedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -67,6 +70,8 @@ public class ListaVendedorJF extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblVendedores);
 
+        btnNovo.setBackground(new java.awt.Color(51, 51, 51));
+        btnNovo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +79,8 @@ public class ListaVendedorJF extends javax.swing.JFrame {
             }
         });
 
+        btnEditar.setBackground(new java.awt.Color(51, 51, 51));
+        btnEditar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +88,8 @@ public class ListaVendedorJF extends javax.swing.JFrame {
             }
         });
 
+        btnRemover.setBackground(new java.awt.Color(51, 51, 51));
+        btnRemover.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnRemover.setText("Remover");
         btnRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,6 +97,8 @@ public class ListaVendedorJF extends javax.swing.JFrame {
             }
         });
 
+        btnInfo.setBackground(new java.awt.Color(51, 51, 51));
+        btnInfo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         btnInfo.setText("Mais Informações");
         btnInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,36 +106,46 @@ public class ListaVendedorJF extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Vendedores Cadastrados");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnNovo)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEditar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnRemover)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnInfo)))
                 .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(91, 91, 91))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnInfo)
                     .addComponent(btnNovo)
                     .addComponent(btnEditar)
-                    .addComponent(btnRemover)
-                    .addComponent(btnInfo))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(btnRemover))
+                .addGap(22, 22, 22))
         );
 
         pack();
@@ -135,13 +156,16 @@ public class ListaVendedorJF extends javax.swing.JFrame {
         telaCadastro.setVisible(true);
 
         Vendedor novoVendedor = telaCadastro.getVendedor();
-        try {
-            //JOptionPane.showMessageDialog(rootPane, novoVendedor);
-            dao.persist(novoVendedor);
-        } catch (Exception ex) {
-            System.err.println("Erro ao cadastrar Vendedor: " + ex);
+        if (novoVendedor != null) {
+            try {
+                //JOptionPane.showMessageDialog(rootPane, novoVendedor);
+                dao.persist(novoVendedor);
+                loadTabelaVendedores();
+            } catch (Exception ex) {
+                System.err.println("Erro ao cadastrar Vendedor: " + ex);
+            }
         }
-        loadTabelaVendedores();
+
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfoActionPerformed
@@ -180,13 +204,15 @@ public class ListaVendedorJF extends javax.swing.JFrame {
 
             telaEdicao.setVisible(true);
 
-            try {
-                dao.persist(telaEdicao.getVendedor());
-            } catch (Exception ex) {
-                System.out.println("Erro ao editar Vendedor: " + ex);
+            Vendedor obj_retorno = telaEdicao.getVendedor();
+            if (obj_retorno != null) {
+                try {
+                    dao.persist(obj_retorno);
+                    loadTabelaVendedores();
+                } catch (Exception ex) {
+                    System.out.println("Erro ao editar Vendedor: " + ex);
+                }
             }
-
-            loadTabelaVendedores();
 
         } else {
             JOptionPane.showMessageDialog(rootPane, "Selecione um vendedor");
@@ -252,6 +278,7 @@ public class ListaVendedorJF extends javax.swing.JFrame {
     private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnRemover;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblVendedores;
     // End of variables declaration//GEN-END:variables

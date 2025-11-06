@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 
@@ -36,6 +37,14 @@ public class Veiculo implements Serializable {
 
     @OneToMany(mappedBy = "veiculo")
     private List<Venda> vendas;
+    
+    @Column(name = "vei_disponivel")
+    private Boolean disponivel;
+    
+    public Veiculo(){
+        disponivel = true;
+        vendas = new ArrayList<>();
+    }
 
     public String getPlaca() {
         return placa;
@@ -101,6 +110,14 @@ public class Veiculo implements Serializable {
         this.vendas = vendas;
     }
 
+    public Boolean getDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(Boolean disponivel) {
+        this.disponivel = disponivel;
+    }
+    
     @Override
     public String toString() {
         return placa;
@@ -115,6 +132,7 @@ public class Veiculo implements Serializable {
         aux += "Modelo: " + modelo + "\n";
         aux += "Marca: " + marca + "\n";
         aux += "Valor: R$" + valor + "\n";
+        aux += disponivel ? "[Disponivel]" : "[Indisponivel]"; 
 
         return aux;
     }

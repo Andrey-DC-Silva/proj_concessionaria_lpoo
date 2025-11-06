@@ -28,6 +28,7 @@ public class PrincipalJF extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jMenu1.setBackground(new java.awt.Color(51, 51, 51));
         jMenu1.setText("Cadastro");
 
         miVendedor.setText("Vendedor");

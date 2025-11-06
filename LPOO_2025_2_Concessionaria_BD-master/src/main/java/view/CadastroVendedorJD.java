@@ -1,11 +1,11 @@
 package view;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import javax.swing.JOptionPane;
 import model.Vendedor;
+import model.dao.Util;
 
 public class CadastroVendedorJD extends javax.swing.JDialog {
 
@@ -51,20 +51,61 @@ public class CadastroVendedorJD extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cadastro de Vendedor");
 
+        lblNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblNome.setForeground(new java.awt.Color(255, 255, 255));
         lblNome.setText("Nome");
 
+        txtNome.setBackground(new java.awt.Color(51, 51, 51));
+        txtNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtNome.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("CPF");
 
+        txtCPF.setBackground(new java.awt.Color(51, 51, 51));
+        txtCPF.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCPF.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Data Nascimento");
 
+        txtDtNascimento.setBackground(new java.awt.Color(51, 51, 51));
+        txtDtNascimento.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtDtNascimento.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Telefone");
 
+        txtTelefone.setBackground(new java.awt.Color(51, 51, 51));
+        txtTelefone.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtTelefone.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Salário");
 
+        txtSalario.setBackground(new java.awt.Color(51, 51, 51));
+        txtSalario.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtSalario.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Comissão");
 
+        txtComissao.setBackground(new java.awt.Color(51, 51, 51));
+        txtComissao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtComissao.setForeground(new java.awt.Color(255, 255, 255));
+
+        btnSalvar.setBackground(new java.awt.Color(51, 51, 51));
+        btnSalvar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +113,9 @@ public class CadastroVendedorJD extends javax.swing.JDialog {
             }
         });
 
+        btnCancelar.setBackground(new java.awt.Color(51, 51, 51));
+        btnCancelar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,40 +128,41 @@ public class CadastroVendedorJD extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblNome)
-                                .addComponent(jLabel2))
-                            .addGap(30, 30, 30)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNome)
-                                .addComponent(txtCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel6))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtComissao)
-                                .addComponent(txtTelefone)
-                                .addComponent(txtDtNascimento)
-                                .addComponent(txtSalario, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNome)
+                            .addComponent(jLabel2))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNome)
+                            .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtComissao)
+                            .addComponent(txtTelefone)
+                            .addComponent(txtDtNascimento)
+                            .addComponent(txtSalario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -143,11 +188,11 @@ public class CadastroVendedorJD extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(txtComissao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
-                .addGap(28, 28, 28))
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -159,14 +204,32 @@ public class CadastroVendedorJD extends javax.swing.JDialog {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
+        if (vendedor == null) {
+            vendedor = new Vendedor();
+        }
+
         try {
             this.vendedor.setNome(txtNome.getText());
+            
+            String CPF = txtCPF.getText();
+            if(!Util.validaCPF(CPF)){
+                JOptionPane.showMessageDialog(rootPane, "CPF inválido! O Padrão deve ser: (00.000.000-00)");
+                return;
+            }
             this.vendedor.setCPF(txtCPF.getText());
-            // sintaxe para conversão: LocalDate.parse(String com data, máscara)
+            
             this.vendedor.setDataNascimento(LocalDate.parse(txtDtNascimento.getText(), formatter));
             this.vendedor.setTelefone(txtTelefone.getText());
-            this.vendedor.setSalario(Double.parseDouble(txtSalario.getText()));
-            this.vendedor.setComissao(Double.parseDouble(txtComissao.getText()));
+            double salario = Double.parseDouble(txtSalario.getText());
+            this.vendedor.setSalario(salario);
+
+            double comissao = Double.parseDouble(txtComissao.getText());
+            if (comissao < 0 || comissao >= 100) {
+                JOptionPane.showMessageDialog(rootPane, "Valor de comissão inválido! Informe somente valores entre [0-100]%");
+                return;
+            } else {
+                this.vendedor.setComissao(comissao);
+            }
 
             this.dispose();
         } catch (DateTimeParseException e1) {
@@ -176,8 +239,7 @@ public class CadastroVendedorJD extends javax.swing.JDialog {
         } catch (Exception e3) {
             JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro inesperado: \n" + e3);
         }
-
-
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**

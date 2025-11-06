@@ -201,47 +201,52 @@ public class ListaVendas extends javax.swing.JFrame {
             } catch (Exception ex) {
                 System.err.println("Erro ao salvar nova Venda: " + novoObj + "\n Erro: " + ex);
             }
-
         }
+        
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         if (tblVendas.getSelectedRow() != -1) {
-            Venda obj_venda = (Venda) tblVendas.getModel().getValueAt(tblVendas.getSelectedRow(), 0);
-            CadastroVendaJD telaEdicao = new CadastroVendaJD(this, rootPaneCheckingEnabled);
-            telaEdicao.setVenda(obj_venda);
-            telaEdicao.setVisible(true);
+            Venda obj = (Venda) tblVendas.getModel().getValueAt(tblVendas.getSelectedRow(), 0);
+            CadastroVendaJD telaVenda = new CadastroVendaJD(this, rootPaneCheckingEnabled);
+            telaVenda.setVenda(obj);
+            telaVenda.setVisible(true);
 
-            Venda vendaEditada = telaEdicao.getVenda();
-            if (vendaEditada != null) {
+            Venda vendaEdt = telaVenda.getVenda();
+
+            if (vendaEdt != null) {
                 try {
-                    dao.persist(vendaEditada);
-                    loadVendas();
+                    dao.persist(vendaEdt);
                 } catch (Exception ex) {
-                    System.out.println("Erro ao editar a venda: " + ex);
+                    System.err.println("Erro ao editar Venda\n Erro: " + ex);
                 }
+
+                loadVendas();
             }
+
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione uma venda");
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha");
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
 
         if (tblVendas.getSelectedRow() != -1) {
-            Venda obj_venda = (Venda) tblVendas.getModel().getValueAt(tblVendas.getSelectedRow(), 0);
-            int op_remover = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja remover " + obj_venda + "?");
+            Venda obj = (Venda) tblVendas.getModel().getValueAt(tblVendas.getSelectedRow(), 0);
+            String txtVenda = "Venda: { veiculo" + obj.getVeiculo().getPlaca() + ", cliente: " + obj.getCliente().getNome() + ", vendedor: " + obj.getVendedor().getNome() + "}";
+            int op_remover = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja remover " + txtVenda + "?");
             if (op_remover == JOptionPane.YES_OPTION) {
                 try {
-                    dao.remover(obj_venda);
-                    JOptionPane.showMessageDialog(rootPane, "Venda removida com sucesso...");
-                    loadVendas();
+                    dao.remover(obj);
                 } catch (Exception ex) {
-                    System.err.println("Erro ao remover venda: " + ex);
+                    System.out.println("Erro ao remover " + txtVenda + "\n Erro: " + ex);
                 }
+                JOptionPane.showMessageDialog(rootPane, "Venda removida com sucesso... ");
+                loadVendas();
             }
+
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione uma venda");
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma linha");
         }
 
     }//GEN-LAST:event_btnRemoverActionPerformed

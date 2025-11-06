@@ -17,6 +17,7 @@ public class ListaVeiculoJF extends javax.swing.JFrame {
 
         dao = new VeiculoDAO();
         loadTabelaVeiculos();
+        verificaDisponibilidade();
     }
 
     /**
@@ -28,31 +29,38 @@ public class ListaVeiculoJF extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVeiculos = new javax.swing.JTable();
         btnNovo = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         btnInfo = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        tblVeiculos.setBackground(new java.awt.Color(51, 51, 51));
+        tblVeiculos.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        tblVeiculos.setForeground(new java.awt.Color(255, 255, 255));
         tblVeiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Placa", "Marca", "Modelo", "Ano Modelo"
+                "Placa", "Marca", "Modelo", "Ano Modelo", "Disponibilidade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -65,6 +73,9 @@ public class ListaVeiculoJF extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblVeiculos);
 
+        btnNovo.setBackground(new java.awt.Color(51, 51, 51));
+        btnNovo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnNovo.setForeground(new java.awt.Color(255, 255, 255));
         btnNovo.setText("Novo");
         btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +83,9 @@ public class ListaVeiculoJF extends javax.swing.JFrame {
             }
         });
 
+        btnEditar.setBackground(new java.awt.Color(51, 51, 51));
+        btnEditar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +93,9 @@ public class ListaVeiculoJF extends javax.swing.JFrame {
             }
         });
 
+        btnRemover.setBackground(new java.awt.Color(51, 51, 51));
+        btnRemover.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnRemover.setForeground(new java.awt.Color(255, 255, 255));
         btnRemover.setText("Remover");
         btnRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +103,9 @@ public class ListaVeiculoJF extends javax.swing.JFrame {
             }
         });
 
+        btnInfo.setBackground(new java.awt.Color(51, 51, 51));
+        btnInfo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnInfo.setForeground(new java.awt.Color(255, 255, 255));
         btnInfo.setText("Mais Informações");
         btnInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,28 +113,39 @@ public class ListaVeiculoJF extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Veículos Cadastrados");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnNovo)
                         .addGap(18, 18, 18)
-                        .addComponent(btnEditar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnRemover)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnInfo)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnNovo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnEditar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnRemover)
+                                .addGap(54, 54, 54)
+                                .addComponent(btnInfo))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel2)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -122,7 +153,7 @@ public class ListaVeiculoJF extends javax.swing.JFrame {
                     .addComponent(btnEditar)
                     .addComponent(btnRemover)
                     .addComponent(btnInfo))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -134,7 +165,7 @@ public class ListaVeiculoJF extends javax.swing.JFrame {
 
         Veiculo novoVeiculo = telaCadastro.getVeiculo();
         try {
-            //JOptionPane.showMessageDialog(rootPane, novoVeiculo);
+            novoVeiculo.setDisponivel(true);
             dao.persist(novoVeiculo);
         } catch (Exception ex) {
             System.out.println("Erro ao castrar o veículo " + novoVeiculo.toString() + " \n Erro: " + ex);
@@ -147,26 +178,26 @@ public class ListaVeiculoJF extends javax.swing.JFrame {
             Veiculo obj_vendedor = (Veiculo) dao.buscarPorPlaca((String) tblVeiculos.getModel().getValueAt(tblVeiculos.getSelectedRow(), 0)).get();
             JOptionPane.showMessageDialog(rootPane, obj_vendedor.exibirDados());
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um vendedor");
+            JOptionPane.showMessageDialog(rootPane, "Selecione um veículo");
         }
     }//GEN-LAST:event_btnInfoActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
         if (tblVeiculos.getSelectedRow() != -1) {
-            Veiculo obj_vendedor = (Veiculo) dao.buscarPorPlaca((String) tblVeiculos.getModel().getValueAt(tblVeiculos.getSelectedRow(), 0)).get();
-            int op_remover = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja remover " + obj_vendedor + "?");
+            Veiculo obj_veículo = (Veiculo) dao.buscarPorPlaca((String) tblVeiculos.getModel().getValueAt(tblVeiculos.getSelectedRow(), 0)).get();
+            int op_remover = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja remover " + obj_veículo + "?");
             if (op_remover == JOptionPane.YES_OPTION) {
                 try {
-                    dao.remover(obj_vendedor);
+                    dao.remover(obj_veículo);
                 } catch (Exception ex) {
-                    System.out.println("Erro ao remover veículo " + obj_vendedor + "\n Erro: " + ex);
+                    System.out.println("Erro ao remover veículo " + obj_veículo + "\n Erro: " + ex);
                 }
                 JOptionPane.showMessageDialog(rootPane, "Veiculo removido com sucesso... ");
                 loadTabelaVeiculos();
             }
 
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um vendedor");
+            JOptionPane.showMessageDialog(rootPane, "Selecione um veículo");
         }
     }//GEN-LAST:event_btnRemoverActionPerformed
 
@@ -187,7 +218,7 @@ public class ListaVeiculoJF extends javax.swing.JFrame {
             loadTabelaVeiculos();
 
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Selecione um vendedor");
+            JOptionPane.showMessageDialog(rootPane, "Selecione um veículo");
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -231,9 +262,7 @@ public class ListaVeiculoJF extends javax.swing.JFrame {
 
     public void loadTabelaVeiculos() {
 
-        // Obtém o modelo da tabela - vincular o que definimos no Desing
         DefaultTableModel modelo = (DefaultTableModel) tblVeiculos.getModel();
-        //limpar as linhas e popular 
         modelo.setNumRows(0);
 
         for (Veiculo obj : dao.listaVeiculos()) {
@@ -241,18 +270,46 @@ public class ListaVeiculoJF extends javax.swing.JFrame {
                 obj.getPlaca(),
                 obj.getMarca(),
                 obj.getModelo(),
-                obj.getAnoModelo()
+                obj.getAnoModelo(),
+                obj.getDisponivel() != null ? obj.getDisponivel() : false
             };
             modelo.addRow(linha);
         }
 
     }
 
+    public void verificaDisponibilidade() {
+        tblVeiculos.getModel().addTableModelListener(e -> {
+            int row = e.getFirstRow();
+            int col = e.getColumn();
+            if (col == 4 && row >= 0) {
+
+                String placa = (String) tblVeiculos.getValueAt(row, 0);
+                dao.buscarPorPlaca(placa).ifPresent(v -> {
+                    int op_edt = JOptionPane.showConfirmDialog(rootPane, "Tem certeza que deseja alterar a disponibilidade?");
+                    if (op_edt == JOptionPane.YES_OPTION) {
+                        Boolean disponivel = (Boolean) tblVeiculos.getValueAt(row, 4);
+                        v.setDisponivel(disponivel);
+                        try {
+                            dao.persist(v);
+                        } catch (Exception ex) {
+                            System.out.println("Erro ao alterar a disponibilidade do veículo: " + v + "\nErro: " + ex);
+                        }
+                    }
+                });
+            }
+        });
+    }
+    
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnInfo;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnRemover;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblVeiculos;
     // End of variables declaration//GEN-END:variables

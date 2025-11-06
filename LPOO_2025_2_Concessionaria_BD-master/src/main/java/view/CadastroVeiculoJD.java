@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import model.Marca;
 import model.Modelo;
 import model.Veiculo;
+import model.dao.Util;
 
 public class CadastroVeiculoJD extends javax.swing.JDialog {
 
@@ -56,20 +57,56 @@ public class CadastroVeiculoJD extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Cadastro de Veículo");
 
+        lblNome.setBackground(new java.awt.Color(51, 51, 51));
+        lblNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblNome.setForeground(new java.awt.Color(255, 255, 255));
         lblNome.setText("Placa");
 
+        txtPlaca.setBackground(new java.awt.Color(51, 51, 51));
+        txtPlaca.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtPlaca.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Cor");
 
+        txtCor.setBackground(new java.awt.Color(51, 51, 51));
+        txtCor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtCor.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Ano Fabricação");
 
+        jLabel4.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Valor");
 
+        txtValor.setBackground(new java.awt.Color(51, 51, 51));
+        txtValor.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtValor.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel5.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Marca");
 
+        jLabel6.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Modelo");
 
+        btnSalvar.setBackground(new java.awt.Color(51, 51, 51));
+        btnSalvar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +114,9 @@ public class CadastroVeiculoJD extends javax.swing.JDialog {
             }
         });
 
+        btnCancelar.setBackground(new java.awt.Color(51, 51, 51));
+        btnCancelar.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,59 +124,77 @@ public class CadastroVeiculoJD extends javax.swing.JDialog {
             }
         });
 
+        txtAnoFabricacao.setBackground(new java.awt.Color(51, 51, 51));
+        txtAnoFabricacao.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtAnoFabricacao.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel8.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Ano Modelo");
+
+        txtAnoModelo.setBackground(new java.awt.Color(51, 51, 51));
+        txtAnoModelo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        txtAnoModelo.setForeground(new java.awt.Color(255, 255, 255));
+
+        cmbMarca.setBackground(new java.awt.Color(51, 51, 51));
+        cmbMarca.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        cmbMarca.setForeground(new java.awt.Color(255, 255, 255));
+
+        cmbModelo.setBackground(new java.awt.Color(51, 51, 51));
+        cmbModelo.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        cmbModelo.setForeground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
+                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblNome)
-                                    .addComponent(jLabel2))
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPlaca)
-                                    .addComponent(txtCor, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtAnoModelo, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                                    .addComponent(txtAnoFabricacao))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbMarca, 0, 199, Short.MAX_VALUE)
+                            .addComponent(txtValor)
+                            .addComponent(cmbModelo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel6))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtValor)
-                                        .addComponent(cmbMarca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cmbModelo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jLabel3)
                             .addComponent(jLabel8))
-                        .addGap(0, 19, Short.MAX_VALUE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtAnoModelo)
+                            .addComponent(txtAnoFabricacao, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblNome)
+                            .addComponent(jLabel2))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtCor, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                            .addComponent(txtPlaca)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNome)
                     .addComponent(txtPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,13 +203,13 @@ public class CadastroVeiculoJD extends javax.swing.JDialog {
                     .addComponent(jLabel2)
                     .addComponent(txtCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtAnoFabricacao, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(txtAnoModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAnoModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
@@ -164,11 +222,11 @@ public class CadastroVeiculoJD extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(cmbModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalvar)
-                    .addComponent(btnCancelar))
-                .addContainerGap())
+                    .addComponent(btnCancelar)
+                    .addComponent(btnSalvar))
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -180,13 +238,39 @@ public class CadastroVeiculoJD extends javax.swing.JDialog {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
+        if (veiculo == null) {
+            veiculo = new Veiculo();
+        }
+
         try {
-            veiculo.setPlaca(txtPlaca.getText());
+            
+            String placa = txtPlaca.getText().trim().replaceAll("-", "").toUpperCase();
+
+            if (!Util.validaPlaca(placa)) {
+                JOptionPane.showMessageDialog(rootPane, "Placa inválida! O Padrão deve ser: Antigo[ABC1234] ou Mercosul[ABC1D23]");
+                return;
+            }
+            veiculo.setPlaca(placa);
+
             veiculo.setCor(txtCor.getText());
             veiculo.setMarca((Marca) cmbMarca.getSelectedItem());
             veiculo.setModelo((Modelo) cmbModelo.getSelectedItem());
-            veiculo.setAnoFabricacao(Integer.parseInt(txtAnoFabricacao.getText().trim()));
+            
+            int anoFabricao = Integer.parseInt(txtAnoFabricacao.getText().trim());
+            if (Util.validaAno(anoFabricao)) {
+                veiculo.setAnoFabricacao(Integer.parseInt(txtAnoFabricacao.getText().trim()));
+            } else {
+                return;
+            }
+
+            int anoModelo = Integer.parseInt(txtAnoModelo.getText().trim());
+            if (Util.validaAno(anoModelo)) {
+                veiculo.setAnoModelo(Integer.parseInt(txtAnoModelo.getText().trim()));
+            } else {
+                return;
+            }
             veiculo.setAnoModelo(Integer.parseInt(txtAnoModelo.getText().trim()));
+
             veiculo.setValor(Double.parseDouble(txtValor.getText().trim().replace(",", ".")));
 
             this.dispose();
@@ -276,9 +360,9 @@ public class CadastroVeiculoJD extends javax.swing.JDialog {
 
     private void loadModelos() {
         cmbModelo.removeAllItems();
-//        for(Modelo obj: Modelo.values()){
-//            cmbModelo.addItem(obj);
-//        }
+        for (Modelo obj : Modelo.values()) {
+            cmbModelo.addItem(obj);
+        }
         List<Modelo> modelos = Arrays.asList(Modelo.values());
         modelos.forEach(obj -> cmbModelo.addItem(obj));
 

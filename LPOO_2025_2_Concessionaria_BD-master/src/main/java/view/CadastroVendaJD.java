@@ -277,12 +277,12 @@ public class CadastroVendaJD extends javax.swing.JDialog {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
 
         try {
-            // 1 - instanciar o objeto do tipo Venda
-            venda = new Venda();
+            
+            if (venda == null) {
+                venda = new Venda();
+            }
 
-            // 2 - setar os valores dos campos txt... para o objeto  venda
-            double valor = Double.parseDouble(txtValor.getText()
-                    .replace(",", "."));
+            double valor = Double.parseDouble(txtValor.getText().replace(",", "."));
             LocalDateTime dataVenda = LocalDateTime.parse(txtDataVenda.getText(), formatter);
 
             venda.setValorVenda(valor);
@@ -293,7 +293,10 @@ public class CadastroVendaJD extends javax.swing.JDialog {
             venda.setVendedor((Vendedor) cmbVendedor.getSelectedItem());
             venda.setVeiculo((Veiculo) cmbVeiculo.getSelectedItem());
 
-            // 3 - fechar a aplicação
+            // venda.getVeiculo().setDisponivel(false);
+
+            daoVeiculo.persist(venda.getVeiculo());
+            
             this.dispose();
 
         } catch (NumberFormatException e) {
@@ -309,12 +312,11 @@ public class CadastroVendaJD extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void cmbVeiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbVeiculoActionPerformed
+       Veiculo objSel = (Veiculo) cmbVeiculo.getSelectedItem();
 
-        Veiculo selectedVehicle = (Veiculo) cmbVeiculo.getSelectedItem();
-
-        if (selectedVehicle != null) {
-            txtValor.setText(String.valueOf(selectedVehicle.getValor()));
-        }
+       if (objSel != null) {
+            txtValor.setText("" + objSel.getValor());
+       }
 
     }//GEN-LAST:event_cmbVeiculoActionPerformed
 
@@ -366,6 +368,14 @@ public class CadastroVendaJD extends javax.swing.JDialog {
 
     public void setVenda(Venda venda) {
         this.venda = venda;
+        txtDataVenda.setText(venda.getDataVenda().format(formatter));
+        txtValor.setText("" + venda.getValorVenda());
+        cmbCliente.setSelectedItem(venda.getCliente());
+        cmbVeiculo.setSelectedItem(venda.getVeiculo());
+        cmbVendedor.setSelectedItem(venda.getVendedor());
+
+        cmbFormaContrato.setSelectedItem(venda.getFormaContrato());
+        cmbFormaPgto.setSelectedItem(venda.getFormaPgto());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
